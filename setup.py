@@ -31,7 +31,8 @@ includes = [
 # Arquivos adicionais para incluir no build
 include_files = [
     ("reminder_popup_app.py", "reminder_popup_app.py"),
-    (qt_plugins_path, "platforms")
+    (qt_plugins_path, "platforms"),
+    ("assets", "assets"),
 ]
 
 # Executável

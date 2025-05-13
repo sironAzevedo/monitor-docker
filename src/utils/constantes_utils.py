@@ -1,7 +1,9 @@
-from src.services.config_utils import resource_path
+from src.services.config_utils import resource_path, exist_file
 
+folder_dev = 'assets'
+folder_prod = '/opt/DockerMonitor/assets'
 
-ICON_PATH = resource_path("assets/docker_monitor.png")
-ICON_HOME_PATH = resource_path("assets/home.png")
-ICON_REPORT_PATH = resource_path("assets/report.png")
-ICON_SETTINGS_PATH = resource_path("assets/settings.png")
+ICON_PATH = f'{folder_prod}/docker_monitor.png' if exist_file(folder_prod) else resource_path(f"{folder_dev}/docker_monitor.png")
+ICON_HOME_PATH = f'{folder_prod}/home.png' if exist_file(folder_prod) else resource_path(f"{folder_dev}/home.png")
+ICON_REPORT_PATH = f'{folder_prod}/report.png' if exist_file(folder_prod) else resource_path(f"{folder_dev}/report.png")
+ICON_SETTINGS_PATH = f'{folder_prod}/settings.png' if exist_file(folder_prod) else resource_path(f"{folder_dev}/settings.png")
