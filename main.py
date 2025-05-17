@@ -1,18 +1,12 @@
 import os
-import subprocess
 import sys
 
 from PyQt5.QtWidgets import QApplication
 
-from src.services.config_utils import load_config, resource_path, log_and_notify
+from src.services.config_utils import load_config, log_and_notify
 from src.services.docker_utils import DockerUtils
 from src.ui.docker_monitor import DockerMonitor
-
-
-def iniciar_reminder_popup():
-    script_path = resource_path("reminder_popup_app.py")
-    subprocess.Popen([sys.executable, script_path])
-
+from src.utils.constantes_utils import iniciar_popup_monitoramento
 
 if __name__ == "__main__":
 
@@ -28,7 +22,7 @@ if __name__ == "__main__":
     monitoring_enabled = settings.get("monitoring_enabled", False)
 
     if monitoring_enabled:
-        iniciar_reminder_popup()
+        iniciar_popup_monitoramento()
 
     monitor = DockerMonitor(docker_utils)
     monitor.show()
