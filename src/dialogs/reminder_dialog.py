@@ -34,6 +34,7 @@ class ReminderPopup(QMainWindow):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_timer)
 
+        self.init_icon()
         self.init_ui()
         self.start_timer()
         self.center_on_screen()
@@ -140,6 +141,12 @@ class ReminderPopup(QMainWindow):
         #manter na ultima posição
         self.exec_refresh_checkboxes()
         self.update_timer_display()
+
+    def init_icon(self):
+        if os.path.exists(ICON_PATH):
+            self.setWindowIcon(QIcon(ICON_PATH))
+        else:
+            self.setWindowIcon(QIcon.fromTheme("application-default"))
 
     def get_selected_containers(self):
         return [
