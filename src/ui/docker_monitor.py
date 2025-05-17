@@ -21,7 +21,8 @@ from src.services.config_utils import load_config, log_and_notify, save_config, 
 from src.services.docker_utils import DockerUtils
 from src.ui.center_delegate import CenterDelegate
 from src.ui.status_delegate import StatusDelegate
-from src.utils.constantes_utils import ICON_PATH, ICON_HOME_PATH, ICON_SETTINGS_PATH, ICON_REPORT_PATH
+from src.utils.constantes_utils import ICON_PATH, ICON_HOME_PATH, ICON_SETTINGS_PATH, ICON_REPORT_PATH, \
+    MONITOR_CONTAINER
 from src.worker.pulll_image_worker import PullImageWorker
 from src.worker.remove_containers_worker import RemoveContainersWorker
 from src.worker.start_containers_worker import StartContainersWorker
@@ -912,7 +913,7 @@ class DockerMonitor(QMainWindow):
 
         # Reinicia o monitoramento se estiver ativo
         if monitor_enabled:
-            subprocess.Popen([sys.executable, "reminder_popup_app.py"])
+            subprocess.Popen([sys.executable, MONITOR_CONTAINER])
 
     # Método reutilizável para exibir progresso
     def show_progress_dialog(parent=None, title="", text="", maximum=0, cancellable=False):
